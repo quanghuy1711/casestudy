@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function find(x) {
+        let array = x.split("/");
+        if (array.length != 2 || isNaN(array[0]) || isNaN(array[1]) || array[1] == 0) {
+            return console.log('Không phải là phân số');
+        }
+        if (array[0] == 0) {
+            return console.log('Phân số đã nhập bằng 0');
+        }
+        let a = parseFloat(array[0]);
+        let b = parseFloat(array[1]);
+        if (a % b == 0) {
+            console.log(x + ' = ' + a / b);
+        } else {
+            let min = a;
+            if (min > b) {
+                min = b;
+            }
+            for (let i = 2; i <= min; i++) {
+                if (a % i == 0 && b % i == 0) {
+                    a /= i;
+                    b /= i;
+                    i--;
+                }
+            }
+            console.log(x + ' = ' + a + '/' + b);
+        }
+    }
+
+    find(prompt('Nhập phân số'));
+    </script>
+</body>
+</html>
